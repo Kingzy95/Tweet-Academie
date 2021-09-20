@@ -1,2 +1,2 @@
 # Tweet-Academie
-Le but de ce projet est de créer un réseau social pour les étudiants de notre promotion, qui aura les mêmes fonctionnalités que twitter. Il devra être le plus ressemblant possible en terme de fonctionnalités par rapport au site “Twitter”.
+The goal of this project is to create a social network for the students of our class, which will have the same functionalities as twitter. It will have to be as similar as possible in terms of features compared to the "Twitter" site.
