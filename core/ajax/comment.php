@@ -15,8 +15,8 @@
 						<div class="tweet-show-popup-comment-inner">
 							<div class="tweet-show-popup-comment-head">
 								<div class="tweet-show-popup-comment-head-left">
-									 <div class="tweet-show-popup-comment-img">
-									 	<img src="'.BASE_URL.$comment->profileImage.'">
+									 <div class="tweet-show-popup-comment-images">
+									 	<images src="'.BASE_URL.$comment->profileImage.'">
 									 </div>
 								</div>
 								<div class="tweet-show-popup-comment-head-right">

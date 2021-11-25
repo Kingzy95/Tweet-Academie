@@ -20,7 +20,7 @@
    	  	 	foreach ($mensions as $mension) {
    	  	 	  echo '<li><div class="nav-right-down-inner">
 						<div class="nav-right-down-left">
-							<span><img src="'.BASE_URL.$mension->profileImage.'"></span>
+							<span><images src="'.BASE_URL.$mension->profileImage.'"></span>
 						</div>
 						<div class="nav-right-down-right">
 							<div class="nav-right-down-right-headline">

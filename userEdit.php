@@ -1,14 +1,17 @@
 <?php 
 
 	include 'core/init.php';
-	if($getFromU->loggedIn() === false){
-		header('Location: index.php');
-	}
+if (!empty($getFromU)) {
+    if($getFromU->loggedIn() === false){
+        header('Location: index.php');
+    }
+}
     
 	$user_id = $_SESSION['user_id'];
 	$user    = $getFromU->userData($user_id);
-	$notify  = $getFromM->getNotificationCount($user_id);
-
+    if(!empty($getFromM)) {
+        $notify  = $getFromM->getNotificationCount($user_id);
+    }
  
 	if(isset($_POST['screenName'])){
 		if(!empty($_POST['screenName'])){
@@ -80,7 +83,7 @@
         <div class="sidebar">
             <ul style="list-style: none">
             <li>
-                <a href="home.php" class="logo"><img src="./assets/img/logo.png"></a>
+                <a href="home.php" class="logo"><img src="./assets/images/logo.png" alt="" /></a>
             </li>
             <li>
                 <a href="home.php"><i class="fa fa-home"></i><span> Accueil</span></a>
@@ -106,7 +109,7 @@
             <li>
                 <a href="#"><i class="fa fa-ellipsis-h"></i><span> Plus</span></a>
             </li>
-            <li style="padding: 10px 40px;"><button for="pop-up-tweet" class="sidebar__tweet addTweetBtn"> Tweet</button></li>
+            <li style="padding: 10px 40px;"><button form="pop-up-tweet" class="sidebar__tweet addTweetBtn"> Tweet</button></li>
             
             </ul>
 
@@ -134,7 +137,7 @@
             <div class="profile-cover-inner">
                 <div class="profile-cover-img">
                     <!-- PROFILE-COVER -->
-                    <img src="<?php echo $user->profileCover;?>"/>
+                    <img src="<?php echo $user->profileCover;?>" alt=""/>
 
 
 
@@ -176,7 +179,7 @@
                             <div class="profile-info-inner">
                                 <!-- PROFILE-IMAGE -->
                                 <div class="profile-img">
-                                    <img src="<?php echo $user->profileImage;?>"/>
+                                    <img src="<?php echo $user->profileImage;?>" alt=""/>
                                     <div class="img-upload-button-wrap1">
                                         <div class="img-upload-button">
                                             <label for="img-upload-btn">
@@ -216,13 +219,17 @@
                                 <?php if(isset($imgError)){echo '<div>'.$imgError.'</div>';}?>
                                 <div class="profile-name-wrap">
                                     <div class="profile-name">
-                                        <input type="text" name="screenName" value="<?php echo $user->screenName;?>"/>
+                                        <label>
+                                            <input type="text" name="screenName" value="<?php echo $user->screenName;?>"/>
+                                        </label>
                                     </div>
                                     <div class="profile-tname">@<?php echo $user->username;?></div>
                                 </div>
 
                                 <div class="profile-bio-wrap">
-                                    <textarea class="status" name="bio"><?php echo $user->bio;?></textarea>
+                                    <label>
+                                        <textarea class="status" name="bio"><?php echo $user->bio;?></textarea>
+                                    </label>
                                     <div class="hash-box">
                                         <ul>
                                         </ul>
@@ -234,7 +241,9 @@
                                         <ul>
                                             <li>
                                                 <div class="profile-ex-location">
-                                                    <input id="cn" type="text" name="country" placeholder="Country" value="<?php echo $user->country;?>" />
+                                                    <label for="cn">
+                                                        <input id="cn" type="text" name="country" placeholder="Country" value="<?php echo $user->country;?>" />
+                                                    </label>
                                                 </div>
                                             </li>
                                             <?php if(isset($error)){echo '<div>'.$error.'</div>';}?>

@@ -4,8 +4,12 @@
 include 'core/init.php';
 
 $user_id = $_SESSION['user_id'];
-$user    = $getFromU->userData($user_id);
-$notify  = $getFromM->getNotificationCount($user_id);
+if (!empty($getFromU)) {
+    $user    = $getFromU->userData($user_id);
+}
+if (!empty($getFromM)) {
+    $notify  = $getFromM->getNotificationCount($user_id);
+}
 
 if (isset($_GET['username']) === true && empty($_GET['username']) === false) {
   $username = $getFromU->checkInput($_GET['username']);
@@ -27,11 +31,14 @@ if (isset($_GET['username']) === true && empty($_GET['username']) === false) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?php echo $profileData->screenName.' (@'.$profileData->username.')'; ?></title>
+    <title>
+        <?php if (isset($profileData)) {
+            echo $profileData->screenName.' (@'.$profileData->username.')';
+        } ?></title>
 
     <!-- using online links -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
-    <link rel="stylesheet" href="<?php echo BASE_URL;?>assets/css/style.css">
+    <link rel="stylesheet" href="./assets/css/style.css">
 </head>
 <body>
 
@@ -42,7 +49,9 @@ if (isset($_GET['username']) === true && empty($_GET['username']) === false) {
 
         <div class="page_title">
             <a href="home.php"><i class="fa fa-arrow-left"></i></a>
-            <h2><?php echo $user->screenName; ?> <br><span><?php $getFromT->countTweets($user_id); ?> Tweets</span></h2>
+            <h2><?php echo $user->screenName; ?> <br><span><?php if (!empty($getFromT)) {
+                        $getFromT->countTweets($user_id);
+                    } ?> Tweets</span></h2>
         </div>
         <div class="profile-cover-wrap"> 
             <div class="profile-cover-inner">

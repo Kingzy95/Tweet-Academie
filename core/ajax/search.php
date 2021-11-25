@@ -10,7 +10,7 @@
 					<li>
 				  		<div class="nav-right-down-inner">
 							<div class="nav-right-down-left">
-								<a href="'.BASE_URL.$user->username.'"><img src="'.BASE_URL.$user->profileImage.'"></a>
+								<a href="'.BASE_URL.$user->username.'"><images src="'.BASE_URL.$user->profileImage.'"></a>
 							</div>
 							<div class="nav-right-down-right">
 								<div class="nav-right-down-right-headline">

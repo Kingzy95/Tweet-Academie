@@ -369,6 +369,7 @@ textarea{
     color: var(--twitter-color);
     font-size: 23px;
     margin-right: 15px;
+    cursor: pointer;
 }
 
 .tweet__text{
@@ -569,7 +570,8 @@ button.btn:hover{
     background-color: transparent;
     color: var(--twitter-color);
 }
-/*RESPONSIVE*/
+
+/***************************************RESPONSIVE*****************************************/
 
 @media screen and (max-width: 996px){
     .sidebar ul li {

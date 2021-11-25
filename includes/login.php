@@ -8,36 +8,42 @@ if ($_SERVER['REQUEST_METHOD'] == "GET" && realpath(__FILE__) == realpath($_SERV
     $password = $_POST['password'];
 
     if(!empty($email) or !empty($password)) {
-      $email = $getFromU->checkInput($email);
+        if (!empty($getFromU)) {
+            $email = $getFromU->checkInput($email);
+        }
       $password = $getFromU->checkInput($password);
 
       if(!filter_var($email, FILTER_VALIDATE_EMAIL)){
         $errorMsg = "Invalid format";
       }else {
         if($getFromU->login($email, $password) === false){
-          $errorMsg = "The email or password is incorrect!";
+          $errorMsg = "L'adresse électronique ou le mot de passe est incorrect !";
         }
       }
     }else {
-      $errorMsg = "Please enter username and password!";
+      $errorMsg = "Veuillez entrer votre nom d'utilisateur et votre mot de passe !";
     }
   }
 ?>
 
 <div class="form-container sign-in-container">
-<form method="post">
-  <h1>Connexion</h1>
-    <input type="text" name="email" placeholder="Email"/>
-    <input type="password" name="password" placeholder="Mot de passe"/>
-    <input type="submit" name="login" value="SE CONNECTER" style="width: 150px; border-radius: 20px; background:#50b7f5; color: #FFF; font-weight: bold;"/>
-    <?php
-      if(isset($errorMsg)){
-        echo '<li class="error-li">
-        <div class="span-fp-error">'.$errorMsg.'</div>
-        </li>';
-      }
-    ?>
-	</ul>
+    <form method="post">
+      <h1>Connexion</h1>
 
-	</form>
+        <input type="text" name="email" placeholder="Email"/>
+
+        <input type="password" name="password" placeholder="Mot de passe"/>
+
+        <input type="submit" name="login" value="SE CONNECTER" style="width: 150px; border-radius: 20px; background:#50b7f5; color: #FFF; font-weight: bold;"/>
+
+        <?php
+          if(isset($errorMsg)){
+            echo '<li class="error-li">
+                    <div class="span-fp-error">'.$errorMsg.'</div>
+                  </li>';
+          }
+        ?>
+        </ul>
+
+    </form>
 </div>

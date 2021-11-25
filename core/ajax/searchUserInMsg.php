@@ -9,8 +9,8 @@
 			if($user->user_id != $user_id){
 			echo '<div class="people-message" data-user="'.$user->user_id.'">
 						<div class="people-inner">
-							<div class="people-img">
-								<img src="'.BASE_URL.$user->profileImage.'"/>
+							<div class="people-images">
+								<images src="'.BASE_URL.$user->profileImage.'"/>
 							</div>
 							<div class="name-right">
 								<span><a>'.$user->screenName.'</a></span><span>@'.$user->username.'</span>

@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 
 class User{
@@ -52,7 +52,7 @@ class User{
 
 	  public function register($email, $password, $screenName){
 	    $passwordHash = md5($password);
-	    $stmt = $this->pdo->prepare("INSERT INTO `users` (`email`, `password`, `screenName`, `profileImage`, `profileCover`) VALUES (:email, :password, :screenName, 'assets/img/defaultprofileimage.png', 'assets/img/defaultCoverImage.png')");
+	    $stmt = $this->pdo->prepare("INSERT INTO `users` (`email`, `password`, `screenName`, `profileImage`, `profileCover`) VALUES (:email, :password, :screenName, 'assets/images/defaultprofileimage.png', 'assets/images/defaultCoverImage.png')");
 	    $stmt->bindParam(":email", $email, PDO::PARAM_STR);
  	    $stmt->bindParam(":password", $passwordHash , PDO::PARAM_STR);
 	    $stmt->bindParam(":screenName", $screenName, PDO::PARAM_STR);

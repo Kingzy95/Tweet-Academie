@@ -12,6 +12,4 @@
     $getFromF = new Follow($pdo);
     $getFromM = new Message($pdo);
   
-  	define('BASE_URL', 'http://localhost:8888/tweetAcademy/');
- ?>                                                   
- 
+    define('BASE_URL', 'localhost:8888/Tweet-Academie/');

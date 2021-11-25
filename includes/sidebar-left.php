@@ -13,13 +13,13 @@
         <div class="sidebar">
             <ul style="list-style: none">
             <li>
-                <a href="home.php" class="logo"><img src="./assets/img/logo.png"></a>
+                <a href="home.php" class="logo"><img src="./assets/img/logo.png" alt="" /></a>
             </li>
             <li class="active__menu">
                 <a href="home.php"><i class="fa fa-home"></i><span> Accueil</span></a>
             </li>
             <li>
-                <a href="#"><i class="fa fa-hashtag"></i><span> Explore</span></a>
+                <a href="hashtag.php"><i class="fa fa-hashtag"></i><span> Explore</span></a>
             </li>
             <li>
                 <a href="#"><i class="far fa-bell"></i><span> Notifications</span></a>
@@ -39,14 +39,18 @@
             <li>
                 <a href="#"><i class="fa fa-ellipsis-h"></i><span> Plus</span></a>
             </li>
-            <li style="padding: 10px 40px;"><button for="pop-up-tweet" class="sidebar__tweet addTweetBtn"> Tweet</button></li>
+            <li style="padding: 10px 40px;"><button form="pop-up-tweet" class="sidebar__tweet addTweetBtn"> Tweet</button></li>
             
             </ul>
 
             <div class="sidebar-footer">
                 <div class="dropdown">
                     <a href="includes/logout.php" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <img src="<?php echo $user->profileImage ?>" alt="">
+                        <img src="<?php if (!empty($user)) {
+                                            echo $user->profileImage;
+                                        }
+                                    ?>"
+                             alt="">
                         <div class="sidebar-log">
                             <h5>Se déconnecter</h5>
                             <span>@<?php echo $user->username; ?></span>

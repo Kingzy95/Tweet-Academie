@@ -22,8 +22,8 @@
         if ($message->messageFrom === $user_id) {
           echo '<div class="main-msg-body-right">
               <div class="main-msg">
-                <div class="msg-img">
-                  <a href="#"><img src="'.BASE_URL.$message->profileImage.'"/></a>
+                <div class="msg-images">
+                  <a href="#"><images src="'.BASE_URL.$message->profileImage.'"/></a>
                 </div>
                 <div class="msg">'.$message->message.'
                   <div class="msg-time">
@@ -39,8 +39,8 @@
         }else{
           echo '<div class="main-msg-body-left">
             <div class="main-msg-l">
-              <div class="msg-img-l">
-                <a href="#"><img src="'.BASE_URL.$message->profileImage.'"/></a>
+              <div class="msg-images-l">
+                <a href="#"><images src="'.BASE_URL.$message->profileImage.'"/></a>
               </div>
               <div class="msg-l">'.$message->message.'
                 <div class="msg-time-l">

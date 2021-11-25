@@ -1,12 +1,17 @@
 <?php
 
-class Tweet extends User{
+class Tweet extends User {
 	protected $message;
 
- 	public function __construct($pdo){
+	/**
+	 * @param $pdo
+	 */
+
+	public function __construct($pdo){
 		$this->pdo = $pdo;
 		// added new code for PHP 7
 		$this->message  = new Message($this->pdo);
+		//$this->message  = $pdo;
 	}
  
 	//$stmt = $this->pdo->prepare("SELECT * FROM `tweets` LEFT JOIN `users` ON `tweetBy` = `user_id` WHERE `tweetBy` = 2");
@@ -24,7 +29,7 @@ class Tweet extends User{
 	      $user = $this->userData($tweet->retweetBy);
 		  echo '<div class="tweet__box">
 					<div class="tweet__left">
-						<img src="'.$tweet->profileImage.'">
+						<images src="'.$tweet->profileImage.'"  alt=""/>
 					</div>
 					<div class="tweet__body">
 						<div class="tweet__header">

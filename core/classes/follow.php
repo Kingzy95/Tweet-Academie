@@ -82,11 +82,11 @@
 			echo '<div class="follow-unfollow-box">
 					<div class="follow-unfollow-inner">
 						<div class="follow-background">
-							<img src="'.BASE_URL.$following->profileCover.'"/>
+							<images src="'.BASE_URL.$following->profileCover.'"/>
 						</div>
-						<div class="follow-person-button-img">
-							<div class="follow-person-img"> 
-							 	<img src="'.BASE_URL.$following->profileImage.'"/>
+						<div class="follow-person-button-images">
+							<div class="follow-person-images"> 
+							 	<images src="'.BASE_URL.$following->profileImage.'"/>
 							</div>
 							<div class="follow-person-button">
 								 '.$this->followBtn($following->user_id, $user_id, $followID).'
@@ -117,11 +117,11 @@
 			echo '<div class="follow-unfollow-box">
 					<div class="follow-unfollow-inner">
 						<div class="follow-background">
-							<img src="'.BASE_URL.$following->profileCover.'"/>
+							<images src="'.BASE_URL.$following->profileCover.'"/>
 						</div>
-						<div class="follow-person-button-img">
-							<div class="follow-person-img"> 
-							 	<img src="'.BASE_URL.$following->profileImage.'"/>
+						<div class="follow-person-button-images">
+							<div class="follow-person-images"> 
+							 	<images src="'.BASE_URL.$following->profileImage.'"/>
 							</div>
 							<div class="follow-person-button">
 								 '.$this->followBtn($following->user_id, $user_id, $followID).'
@@ -152,7 +152,7 @@
 		foreach ($users as $user) {
 			echo '<div class="suggestion__body">
 					<div class="suggestion">
-						<img src="'.BASE_URL.$user->profileImage.'">
+						<images src="'.BASE_URL.$user->profileImage.'">
 						<div class="suggestion_user">
 							<div class="nameFollow">
 								<a href="'.BASE_URL.$user->username.'"><h5>'.$user->screenName.'</h5></a>

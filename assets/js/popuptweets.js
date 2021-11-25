@@ -18,7 +18,7 @@ $(function(){
 		$.post('http://localhost:8888/tweetAcademy/core/ajax/imagePopup.php', {showImage:tweet_id,user_id:user_id}, function(data){
 			$('.popupTweet').html(data);
 			$('.close-imagePopup').click(function(){
-				$('.img-popup').hide();
+				$('.images-popup').hide();
 			});
 
 		});

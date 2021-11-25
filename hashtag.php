@@ -2,16 +2,30 @@
 
 	include 'core/init.php';
     $user_id = $_SESSION['user_id'];
-    $user    = $getFromU->userData($user_id);
-    $notify  = $getFromM->getNotificationCount($user_id);
+    if (!empty($getFromU)) {
+        $user    = $getFromU->userData($user_id);
+    }
+    if (!empty($getFromM)) {
+        $notify  = $getFromM->getNotificationCount($user_id);
+    }
 
 	if(isset($_GET['hashtag']) && !empty($_GET['hashtag'])){
-		$hashtag  = $getFromU->checkInput($_GET['hashtag']);
+        if (!empty($getFromU)) {
+            $hashtag  = $getFromU->checkInput($_GET['hashtag']);
+        }
 		$user_id  = @$_SESSION['user_id'];
-		$user     = $getFromU->userData($user_id);
-		$tweets   = $getFromT->getTweetsByHash($hashtag);
-		$accounts = $getFromT->getUsersByHash($hashtag);
-		$notify  = $getFromM->getNotificationCount($user_id);
+        if (!empty($getFromU)) {
+            $user     = $getFromU->userData($user_id);
+        }
+        if (!empty($getFromT)) {
+            $tweets   = $getFromT->getTweetsByHash($hashtag);
+        }
+        if (!empty($getFromT)) {
+            $accounts = $getFromT->getUsersByHash($hashtag);
+        }
+        if (!empty($getFromM)) {
+            $notify  = $getFromM->getNotificationCount($user_id);
+        }
 
    	}else{
 		header('Location: hashtag.php');
@@ -28,7 +42,7 @@
 
     <!-- using online links -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
-    <link rel="stylesheet" href="<?php echo BASE_URL;?>assets/css/style.css">
+    <link rel="stylesheet" href="./assets/css/style.css">
     
 </head>
 <body>
@@ -48,13 +62,13 @@
         <div class="sidebar">
             <ul style="list-style: none">
             <li>
-                <a href="home.php" class="logo"><img src="<?php echo BASE_URL; ?>/assets/img/logo.png"></a>
+                <a href="home.php" class="logo"><img src="./assets/images/logo.png"></a>
             </li>
             <li>
                 <a href="home.php"><i class="fa fa-home"></i><span> Accueil</span></a>
             </li>
             <li class="active__menu">
-                <a href="#"><i class="fa fa-hashtag"></i><span> Explore</span></a>
+                <a href="hashtag.php"><i class="fa fa-hashtag"></i><span> Explore</span></a>
             </li>
             <li>
                 <a href="#"><i class="far fa-bell"></i><span> Notifications</span></a>
@@ -128,7 +142,7 @@
                         
                         echo '<div class="tweet__box">
                                 <div class="tweet__left">
-                                    <img src="'.$tweet->profileImage.'">
+                                    <images src="'.$tweet->profileImage.'" alt="" />
                                 </div>
                                 <div class="tweet__body">
                                     <div class="tweet__header">
