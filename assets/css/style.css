@@ -244,6 +244,7 @@ textarea{
 }
 
 .tweet__body{
+    padding-left: 16px;
     width: 100%;
 }
 

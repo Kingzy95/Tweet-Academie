@@ -9,15 +9,16 @@ class Tweet extends User {
 
 	public function __construct($pdo){
 		$this->pdo = $pdo;
-		// added new code for PHP 7
 		$this->message  = new Message($this->pdo);
 		//$this->message  = $pdo;
 	}
- 
+
 	//$stmt = $this->pdo->prepare("SELECT * FROM `tweets` LEFT JOIN `users` ON `tweetBy` = `user_id` WHERE `tweetBy` = 2");
 
+	//$stmt = $this->pdo->prepare("SELECT * FROM `tweets` LEFT JOIN `users` ON `tweetBy` = `user_id` ORDER BY `tweetID` DESC");
+
 	public function tweets($user_id, $num){
-	    $stmt = $this->pdo->prepare("SELECT * FROM `tweets` LEFT JOIN `users` ON `tweetBy` = `user_id` ORDER BY `tweetID` DESC");
+	    $stmt = $this->pdo->prepare("SELECT * FROM `tweets` LEFT JOIN `users` ON `tweetBy` = :user_id ORDER BY `tweetBy` = :num ");
 	    $stmt->bindParam(":user_id", $user_id, PDO::PARAM_INT);
 	    $stmt->bindParam(":num", $num, PDO::PARAM_INT);
 	    $stmt->execute();
@@ -211,7 +212,8 @@ class Tweet extends User {
 	//$stmt = $this->pdo->prepare("SELECT COUNT(`tweetID`) AS `totalTweets` FROM `tweets` WHERE `tweetBy` = :user_id AND `retweetID` = '0' OR `retweetBy` = :user_id");
 
 	public function countTweets($user_id){
-		$stmt = $this->pdo->prepare("SELECT COUNT(`tweetID`) AS `totalTweets` FROM `tweets`");
+		//$stmt = $this->pdo->prepare("SELECT COUNT(`tweetID`) AS `totalTweets` FROM `tweets`");
+		$stmt = $this->pdo->prepare("SELECT COUNT(`tweetID`) AS `totalTweets` FROM `tweets` WHERE `tweetBy` = :user_id AND `retweetID` = '0' OR `retweetBy` = :user_id");
 		$stmt->bindParam(":user_id", $user_id, PDO::PARAM_INT);
 		$stmt->execute();
 		$count = $stmt->fetch(PDO::FETCH_OBJ);
